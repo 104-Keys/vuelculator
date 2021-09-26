@@ -79,7 +79,6 @@
    * @description This function checks for an operator at the end of the equation and replaces it with the one concatenated last
   **/
   const checkOperator = (equation, requestedOperator) => {
-    console.log("equation --- ", equation)
     return equation.replace(/( [\+\-\/x] )$/g, '')
   }
   /**
