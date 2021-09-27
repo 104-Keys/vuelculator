@@ -50,28 +50,28 @@
    * @description This function concatenates a plus sign to the equation
   **/
   const plus = () => {
-    equation.value = `${checkOperator(equation.value, plusOperator)}` + plusOperator;
+    equation.value = `${checkOperator(equation.value, plusOperator)}`;
   }
   const minusOperator = ' - ';
   /**
    * @description This function concatenates a minus sign to the equation
   **/
   const minus = () => {
-    equation.value = `${checkOperator(equation.value, minusOperator)}` + minusOperator;
+    equation.value = `${checkOperator(equation.value, minusOperator)}`;
   }
   const multiplyOperator = ' x ';
   /**
    * @description This function concatenates a multiplication sign(x) to the equation
   **/
   const multiply = () => {
-    equation.value = `${checkOperator(equation.value, multiplyOperator)}` + multiplyOperator;
+    equation.value = `${checkOperator(equation.value, multiplyOperator)}`;
   }
   const divideOperator = ' / ';
   /**
    * @description This function concatenates a division sign to the equation
   **/
   const divide = () => {
-    equation.value = `${checkOperator(equation.value, divideOperator)}` + divideOperator;
+    equation.value = `${checkOperator(equation.value, divideOperator)}`;
   }
   /**
    * @description This function clears the equation
@@ -81,7 +81,7 @@
    * @description This function checks for an operator at the end of the equation and replaces it with the one concatenated last
   **/
   const checkOperator = (equation, requestedOperator) => {
-    return equation.replace(/( [\+\-\/x] )$/g, '')
+    return equation.replace(/( [\+\-\/x] )$/g, '') + requestedOperator;
   }
   /**
    * @description This function resolves the equation to give a mathematical answer
