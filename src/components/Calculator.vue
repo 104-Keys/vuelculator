@@ -85,7 +85,8 @@
    * @description This function resolves the equation to give a mathematical answer
   **/
   const result = () => {
-    let eqResult = Function('"use strict";return (' + equation.value.replace(/( \x+ )/g, ' * ') + ')')();
+    let finalEqn = equation.value.replace(/( [\+\-\/x] )$/g, '')
+    let eqResult = Function('"use strict";return (' + finalEqn.replace(/( \x+ )/g, ' * ') + ')')();
     equation.value = `${eqResult}`;
   }
 </script>
