@@ -37,12 +37,13 @@
 
   const equation = ref('0');
   let resultCalled = ref(false);
+  let lastResult = ref(0);
   /**
    * @description This function concatenates a number to the equation
    * @param { Number } num => number to be added to equation
   **/
   const useNumber = (num) => {
-    equation.value = resultCalled.value ? `${num}` : (!!parseInt(equation.value) ? `${equation.value}` + `${num}` : `${num}`);
+    equation.value = resultCalled.value ? `${num}` : (!!parseInt(equation.value) ? `${equation.value}` + `${num}` : (equation.value.search(/^[\-]$/g) !== -1 ? `${equation.value}` + `${num}` : `${num}`));
     resultCalled.value = false;
   };
   const plusOperator = ' + ';
@@ -81,7 +82,9 @@
    * @description This function checks for an operator at the end of the equation and replaces it with the one concatenated last
   **/
   const checkOperator = (equation, requestedOperator) => {
-    return equation.replace(/( [\+\-\/x] )$/g, '') + requestedOperator;
+    return equation.search(/^0$/g) !== -1 ? (requestedOperator.search(/( [\/x] )$/g) !== -1 ? '0' : requestedOperator.replace(/ /g, '')) : equation.replace(/( [\+\-\/x] )$/g, '') + requestedOperator;
+    /* equation.value = resultCalled.value ? lastResult + `${checkOperator(equation.value, plusOperator)}` : ;
+    resultCalled.value = false; */
   }
   /**
    * @description This function resolves the equation to give a mathematical answer
@@ -91,6 +94,7 @@
     resultCalled.value = finalEqn.search(/( [\+\-\/x] )/g) !== -1
     let eqResult = Function('"use strict";return (' + finalEqn.replace(/( \x+ )/g, ' * ') + ')')();
     equation.value = `${eqResult}`;
+    lastResult.value = eqResult;
   }
 </script>
 
