@@ -36,12 +36,14 @@
   import { ref } from 'vue';
 
   const equation = ref('0');
+  let resultCalled = ref(false);
   /**
    * @description This function concatenates a number to the equation
    * @param { Number } num => number to be added to equation
   **/
   const useNumber = (num) => {
-    equation.value = !!parseInt(equation.value) ? `${equation.value}` + `${num}` : `${num}`;
+    equation.value = resultCalled.value ? `${num}` : (!!parseInt(equation.value) ? `${equation.value}` + `${num}` : `${num}`);
+    resultCalled.value = false;
   };
   const plusOperator = ' + ';
   /**
@@ -86,6 +88,7 @@
   **/
   const result = () => {
     let finalEqn = equation.value.replace(/( [\+\-\/x] )$/g, '')
+    resultCalled.value = finalEqn.search(/( [\+\-\/x] )/g) !== -1
     let eqResult = Function('"use strict";return (' + finalEqn.replace(/( \x+ )/g, ' * ') + ')')();
     equation.value = `${eqResult}`;
   }
