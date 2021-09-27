@@ -8,25 +8,25 @@
 
     <div class="keypad">
 
-      <div class="key" @click="useNumber(1)">1</div>
-      <div class="key" @click="useNumber(2)">2</div>
-      <div class="key" @click="useNumber(3)">3</div>
-      <div class="key" @click="plus()">+</div>
+      <div class="key num" @click="useNumber(1)">1</div>
+      <div class="key num" @click="useNumber(2)">2</div>
+      <div class="key num" @click="useNumber(3)">3</div>
+      <div class="key fn" @click="plus()">+</div>
 
-      <div class="key" @click="useNumber(4)">4</div>
-      <div class="key" @click="useNumber(5)">5</div>
-      <div class="key" @click="useNumber(6)">6</div>
-      <div class="key" @click="minus()">-</div>
+      <div class="key num" @click="useNumber(4)">4</div>
+      <div class="key num" @click="useNumber(5)">5</div>
+      <div class="key num" @click="useNumber(6)">6</div>
+      <div class="key fn" @click="minus()">-</div>
 
-      <div class="key" @click="useNumber(7)">7</div>
-      <div class="key" @click="useNumber(8)">8</div>
-      <div class="key" @click="useNumber(9)">9</div>
-      <div class="key" @click="multiply()">x</div>
+      <div class="key num" @click="useNumber(7)">7</div>
+      <div class="key num" @click="useNumber(8)">8</div>
+      <div class="key num" @click="useNumber(9)">9</div>
+      <div class="key fn" @click="multiply()">x</div>
 
-      <div class="key" @click="clear()">AC</div>
-      <div class="key" @click="useNumber(0)">0</div>
-      <div class="key" @click="divide()">/</div>
-      <div class="key" @click="result()">=</div>
+      <div class="key special" @click="clear()">AC</div>
+      <div class="key num" @click="useNumber(0)">0</div>
+      <div class="key fn" @click="divide()">/</div>
+      <div class="key fn" @click="result()">=</div>
 
     </div>
   </div>
@@ -103,13 +103,13 @@
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-  background-color: grey;
-  border: 2px solid teal;
+  background-color: #D9D3C7;
+  border: 2px solid #D9D3C7;
 }
 
 .display{
   flex: 1;
-  background-color: #607d8b;
+  background-color: #A5B3A6;
   margin: 10px;
   font-size: 40px;
   text-align: right;
@@ -122,17 +122,30 @@
   height: 320px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
+  gap: 8px;
+  margin: 10px;
 }
 
 .key{
   display: flex;
-  background-color: #009688;
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  color: black;
   cursor: pointer;
+}
+.num{
+  background-color: #525759;
+  color: #ffffff;
+}
+.fn{
+  background-color: #877569;
+  color: #000000;
+}
+.special{
+  background-color: #BD5A04;
+  color: #000000;
+  font-size: 35px;
+  font-weight: bold;
 }
 ::selection{
   background: none;
