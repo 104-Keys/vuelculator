@@ -35,7 +35,7 @@
    * @param { Number } num => number to be added to equation
   **/
   const useNumber = (num) => {
-    equation.value = resultCalled.value ? `${num}` : (!!parseInt(equation.value) ? `${equation.value}` + `${num}` : (equation.value.search(/^[\-]$/g) !== -1 ? `${equation.value}` + `${num}` : `${num}`));
+    equation.value = resultCalled.value ? `${num}` : equation.value.search(/^0/g) ? `${equation.value}` + `${num}` : (equation.value.search(/^[-]$/g) !== -1 ? `${equation.value}` + `${num}` : `${num}`);
     resultCalled.value = false;
   };
   const plusOperator = ' + ';
@@ -74,9 +74,17 @@
    * @description This function checks for an operator at the end of the equation and replaces it with the one concatenated last
   **/
   const checkOperator = (equation, requestedOperator) => {
-    return equation.search(/^0$/g) !== -1 ? (requestedOperator.search(/( [\/x] )$/g) !== -1 ? '0' : requestedOperator.replace(/ /g, '')) : equation.replace(/( [\+\-\/x] )$/g, '') + requestedOperator;
-    /* equation.value = resultCalled.value ? lastResult + `${checkOperator(equation.value, plusOperator)}` : ;
-    resultCalled.value = false; */
+    if(equation.search(/^0$/g) !== -1){
+      if(requestedOperator.search(/( [/x] )$/g) !== -1) return '0';
+      else return requestedOperator.replace(/ /g, '')
+    }else{
+      if(resultCalled.value){
+        resultCalled.value = false;
+        return lastResult.value + requestedOperator;
+      }else{
+        return `${equation.replace(/( [+\-/x] )$/g, '')}${requestedOperator}`;
+      }
+    }
   }
   /**
    * @description This function resolves the equation to give a mathematical answer
