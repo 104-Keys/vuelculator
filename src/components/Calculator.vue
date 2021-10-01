@@ -82,10 +82,10 @@
    * @description This function resolves the equation to give a mathematical answer
   **/
   const result = () => {
-    let finalEqn = equation.value.replace(/( [\+\-\/x] )$/g, '')
-    resultCalled.value = finalEqn.search(/( [\+\-\/x] )/g) !== -1
+    let finalEqn = equation.value.replace(/( [+\-/x] )$/g, '')
+    resultCalled.value = finalEqn.search(/( [+\-/x] )/g) !== -1
     let eqResult = Function('"use strict";return (' + finalEqn.replace(/( \x+ )/g, ' * ') + ')')();
-    equation.value = `${eqResult}`;
+    equation.value = `${eqResult.toLocaleString()}`;
     lastResult.value = eqResult;
   }
 </script>
