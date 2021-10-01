@@ -5,20 +5,14 @@
     </div>
 
     <div class="keypad">
-
-      <div class="key num" @click="useNumber(1)">1</div>
-      <div class="key num" @click="useNumber(2)">2</div>
-      <div class="key num" @click="useNumber(3)">3</div>
+      
+      <div class="key num" v-for="(num, key) of [1,2,3]" :key="key" @click="useNumber(num)">{{num}}</div>
       <div class="key fn" @click="plus()">+</div>
 
-      <div class="key num" @click="useNumber(4)">4</div>
-      <div class="key num" @click="useNumber(5)">5</div>
-      <div class="key num" @click="useNumber(6)">6</div>
+      <div class="key num" v-for="(num, key) of [4,5,6]" :key="key" @click="useNumber(num)">{{num}}</div>
       <div class="key fn" @click="minus()">-</div>
-
-      <div class="key num" @click="useNumber(7)">7</div>
-      <div class="key num" @click="useNumber(8)">8</div>
-      <div class="key num" @click="useNumber(9)">9</div>
+      
+      <div class="key num" v-for="(num, key) of [7,8,9]" :key="key" @click="useNumber(num)">{{num}}</div>
       <div class="key fn" @click="multiply()">x</div>
 
       <div class="key special" @click="clear()">AC</div>
