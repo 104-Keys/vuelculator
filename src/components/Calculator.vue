@@ -94,7 +94,7 @@
 @font-face {
   font-family: "digital";
   src: local("digital"),
-  url("./fonts/digital-7/digital-7.ttf");
+  url("/fonts/digital-7/digital-7.ttf");
 }
 .calc{
   width: 320px;
