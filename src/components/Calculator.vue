@@ -27,7 +27,7 @@
 <script setup>
   import { ref } from 'vue';
 
-  const equation = ref('0');
+  let equation = ref('0');
   let resultCalled = ref(false);
   let lastResult = ref(0);
   /**
