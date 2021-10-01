@@ -5,7 +5,10 @@
 </script>
 
 <template>
-  <Calculator msg="Vuelculator" />
+  <div>
+    <h1>Vuelculator</h1>
+    <Calculator/>
+  </div>
 </template>
 
 <style>

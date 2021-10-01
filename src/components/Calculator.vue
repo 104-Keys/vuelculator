@@ -1,6 +1,4 @@
 <template>
-<h1>Vuelculator</h1>
-
   <div class="calc">
     <div class="display">
       {{ equation }}
